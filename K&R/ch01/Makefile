@@ -1,0 +1,14 @@
+ROOT=..
+PLATFORM=$(shell $(ROOT)/systype.sh)
+include $(ROOT)/Make.defines.$(PLATFORM)
+
+PROGS =	hello_world
+
+all:	$(PROGS)
+
+%:	%.c
+	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS)
+
+clean:
+	rm -f $(PROGS) $(TEMPFILES) *.o
+
